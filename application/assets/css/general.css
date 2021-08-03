@@ -1,0 +1,113 @@
+body {
+    font-family: 'Open Sans',Arial,Helvetica,sans-serif !important;
+}
+.blue_label {
+    color: #003967 !important;
+}
+
+.blue_light {
+    color: #26589e !important;
+}
+
+.btn_balanz {
+    background-color: #162b77 !important;
+    color: #fff !important;
+}
+
+.text_balanz {
+    color: #162b77 !important;
+}
+
+.blue_title, .blue_data, .blue_thead_label {
+    color: #00195a !important;
+}
+
+.blue_selected, .checked, .blue_btn {
+    background-color: #24589c !important;
+    color: #fff !important;
+}
+
+.blue_text_btn, .balanz_title, .blue_text_balanz {
+    color: #24589c !important;
+}
+
+.blue_btn_border {
+    color: #24589c !important;
+    border: 1px solid #24589c !important;
+}
+
+.bg_gray {
+    background-color: #a3a3a3 !important;
+    color: black !important;
+}
+
+.bg_light_gray {
+    background-color: #edeeef !important;
+}
+
+.bg_thead {
+    background-color: #f4f5f5 !important;
+}
+
+.gray_btn {
+    background-color: #8c8b8b !important;
+    color: #fff !important;
+}
+
+.gray_text {
+    color: #bababa !important;
+}
+
+.green_btn {
+    background-color: #508e66 !important;
+    color: #fff !important;
+}
+
+.green_success {
+    color: #508e66 !important;
+}
+
+.green_text {
+    color: #30894f !important;
+}
+
+.greenllow_btn {
+    background-color: #fcc83d !important;
+    color: #fff !important;
+}
+
+.greenllow_text {
+    color: #b1a547 !important;
+}
+
+.light_gray, .unchecked {
+    background-color: #d6d6d6 !important;
+}
+
+.red_btn {
+    background-color: #b44949 !important;
+    color: #fff !important;
+}
+
+.red_text {
+    color: #b44949 !important;
+}
+
+/* BUTTONS */
+.balanz_btn {
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: .35rem 4rem !important;
+}
+
+.balanz_btn_long {
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: .35rem 2rem !important;
+}
+
+.balanz_btn_longx {
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: .35rem 1rem !important;
+}
