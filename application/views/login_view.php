@@ -2,7 +2,7 @@
 
 
 <div class="container">
-    <h2>Stacked form</h2>
+    <h2>Formulario login</h2>
     <form action="/action_page.php">
     <div class="form-group">
         <label for="email">Email:</label>
