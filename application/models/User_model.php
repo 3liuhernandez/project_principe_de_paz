@@ -33,7 +33,7 @@
             if($this->db->affected_rows() > 0){
                 return "200";
 
-            } else{
+            } else {
                 return "500";
             }
         }

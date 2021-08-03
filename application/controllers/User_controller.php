@@ -36,6 +36,7 @@ class User extends CI_Controller {
         }
 
         $user_data = $this->User_model->get_user_by_login(strtolower($email));
+
         if($user_data == "404") {
             $validate['email'] = "E-mail Inválido";
             print json_encode($validate);
@@ -50,9 +51,6 @@ class User extends CI_Controller {
             $this->session->set_userdata('user_id', $user_data[0]->id);
             $this->session->set_userdata('last_login', $user_data[0]->updated_at);
             $this->session->set_userdata('logged_in', TRUE);
-            $this->session->set_userdata('categories', $this->Category_model->get_categories());
-            $this->session->set_userdata('sub_categories', $this->Sub_category_model->get_subcategories());
-
         }
         print json_encode($validate);
     }
@@ -64,8 +62,6 @@ class User extends CI_Controller {
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('logged_in');
-        $this->session->unset_userdata('categories');
-        $this->session->unset_userdata('sub_categories');
 
         $this->session->sess_destroy();
 
