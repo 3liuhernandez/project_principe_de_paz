@@ -1,7 +1,7 @@
 @import url(general.css);
 
 body {
-    background: url('../images/login/back.png');
+    /* background: url('../images/login/back.png'); */
     background-size: cover;
     background-repeat: no-repeat;
 }
