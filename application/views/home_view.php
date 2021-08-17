@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php $this->load->view("layout/header"); ?>
   <style> </style>
     <nav class="navbar navbar-expand-lg navbar-light bg-light " >
@@ -88,3 +89,4 @@
     </div>
 </body>
 </html>
+
