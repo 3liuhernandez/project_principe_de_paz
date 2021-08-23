@@ -3,17 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_controller extends CI_Controller {
 
-	public function index(){
+	public function index() {
         $this->session->sess_destroy();
         $this->login();
 	}
 
     public function login() {
-        $this->load->view('login_view');
+        $this->load->view('login/login');
     }
 
     public function validate_login() {
         $email = $this->input->post('email');
+        $pswd = $this->input->post('pswd');
+
         $validate = array();
 
         function test_input($data) {
@@ -25,6 +27,9 @@ class User_controller extends CI_Controller {
 		}
 
         $email = test_input($email);
+        $pswd = test_input($pswd);
+
+        $validate['datos'] = $email. " - ". $pswd;
 
         if(empty($email)){
             $validate['email'] = "E-mail Inválido";
@@ -35,24 +40,39 @@ class User_controller extends CI_Controller {
             $validate['email'] = "E-mail Inválido";
         }
 
-        $user_data = $this->User_model->get_user_by_login(strtolower($email));
+        $user_data = $this->User_model->get_user_by_login(strtolower($email), $pswd);
 
-        if($user_data == "404") {
+        if(!is_array($user_data)) {
             $validate['email'] = "E-mail Inválido";
+            $validate['msj'] = $user_data;
             print json_encode($validate);
             exit();
+
         } else {
             /**
              * loggin successfull
              */
-            $validate['msj'] = true;
+            $validate['loggin'] = true;
+            $validate['user_data'] = $user_data;
 
-            $this->session->set_userdata('username', $user_data[0]->username);
+            $this->session->set_userdata('username', $user_data[0]->email);
             $this->session->set_userdata('user_id', $user_data[0]->id);
             $this->session->set_userdata('last_login', $user_data[0]->updated_at);
+            $this->session->set_userdata('role', $user_data[0]->role);
             $this->session->set_userdata('logged_in', TRUE);
+
         }
         print json_encode($validate);
+    }
+
+    public function redirect() {
+        $role = $this->session->userdata('role');
+        
+        if($role == 1) {
+            redirect(base_url('admin'));
+        } else if($role == 2) {
+            redirect(base_url('usuario'));
+        }
     }
 
     public function logout() {
@@ -62,6 +82,7 @@ class User_controller extends CI_Controller {
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('role');
 
         $this->session->sess_destroy();
 

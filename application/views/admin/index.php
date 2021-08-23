@@ -10,3 +10,5 @@
     $this->session->userdata('username');
     echo "<br>";
 ?>
+
+<h1>ADMIN</h1>

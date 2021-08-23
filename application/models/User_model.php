@@ -6,18 +6,17 @@
             parent::__construct();
         }
 
-        public function get_user_by_login($email, $password = "") {
-            $query = $this->db->query("SELECT
-                * FROM users
-
-                WHERE email LIKE ? AND status = 1
-            ", array($email/* , $pass */));
-
-            if($query->num_rows()){
+        public function get_user_by_login($email, $password) {
+            $query = $this->db->query("SELECT * FROM users WHERE email LIKE ? AND `password` LIKE ? AND status = 1", array($email, $password));
+            $rows = $query->num_rows();
+            
+            if($rows > 0){
                 return $query->result();
                 exit;
+
             } else {
-                return '404';
+                return '404 - '. $rows;
+
             }
         }
 
@@ -33,7 +32,7 @@
             if($this->db->affected_rows() > 0){
                 return "200";
 
-            } else {
+            } else{
                 return "500";
             }
         }
