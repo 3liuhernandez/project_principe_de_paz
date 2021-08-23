@@ -28,6 +28,8 @@ class User_controller extends CI_Controller {
         $email = test_input($email);
         $pswd = test_input($pswd);
 
+        $validate['datos'] = $email. " - ". $psw;
+
         if(empty($email)){
             $validate['email'] = "E-mail Inválido";
             print json_encode($validate);
@@ -38,8 +40,9 @@ class User_controller extends CI_Controller {
         }
 
         $user_data = $this->User_model->get_user_by_login(strtolower($email), $pswd);
-        if($user_data == "404") {
+        if(!is_array($user_data)) {
             $validate['email'] = "E-mail Inválido";
+            $validate['msj'] = $user_data;
             print json_encode($validate);
             exit();
         } else {

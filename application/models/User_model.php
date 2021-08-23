@@ -9,11 +9,11 @@
         public function get_user_by_login($email, $password) {
             $query = $this->db->query("SELECT
                 * FROM users
-
-                WHERE email LIKE ? AND password LIKE ? AND status = 1
+                WHERE email LIKE ? AND `password` LIKE ? AND status = 1
             ", array($email, $password));
-
-            if($query->num_rows()){
+            $rows = $query->num_rows();
+            
+            if($rows > 0){
                 return $query->result();
                 exit;
             } else {
