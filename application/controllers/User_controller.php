@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_controller extends CI_Controller {
 
-	public function index(){
+	public function index() {
         $this->session->sess_destroy();
         $this->login();
 	}
@@ -14,6 +14,7 @@ class User_controller extends CI_Controller {
 
     public function validate_login() {
         $email = $this->input->post('email');
+        $pswd = $this->input->post('pswd');
         $validate = array();
 
         function test_input($data) {
@@ -25,6 +26,7 @@ class User_controller extends CI_Controller {
 		}
 
         $email = test_input($email);
+        $pswd = test_input($pswd);
 
         if(empty($email)){
             $validate['email'] = "E-mail Inválido";
@@ -35,8 +37,7 @@ class User_controller extends CI_Controller {
             $validate['email'] = "E-mail Inválido";
         }
 
-        $user_data = $this->User_model->get_user_by_login(strtolower($email));
-
+        $user_data = $this->User_model->get_user_by_login(strtolower($email), $pswd);
         if($user_data == "404") {
             $validate['email'] = "E-mail Inválido";
             print json_encode($validate);
@@ -45,12 +46,15 @@ class User_controller extends CI_Controller {
             /**
              * loggin successfull
              */
-            $validate['msj'] = true;
+            $validate['loggin'] = true;
 
             $this->session->set_userdata('username', $user_data[0]->username);
             $this->session->set_userdata('user_id', $user_data[0]->id);
             $this->session->set_userdata('last_login', $user_data[0]->updated_at);
             $this->session->set_userdata('logged_in', TRUE);
+            $this->session->set_userdata('categories', $this->Category_model->get_categories());
+            $this->session->set_userdata('sub_categories', $this->Sub_category_model->get_subcategories());
+
         }
         print json_encode($validate);
     }

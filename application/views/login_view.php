@@ -17,8 +17,12 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/fontawesome/css/fontawesome.min.css') ?>">
 </head>
 <body>
-    <div class="container d-flex flex-column">
-        <form action="/action_page.php" class="d-flex flex-column align-items-center">
+    <div class="container d-flex flex-column justify-content-center my-4">
+        <form id="loginform" onsubmit="return validate(event);" class="d-flex justify-content-center align-content-center flex-column w-50 mx-auto my-auto">
+            <div id="alert" class="mt-4 alert alert-danger hidden" role="alert">
+                <strong> E-mail Inválido </strong>
+            </div>
+
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
@@ -27,44 +31,63 @@
                 <label for="pwd">Password:</label>
                 <input type="password" class="form-control" id="pwd" name="pswd" placeholder="Enter password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="submit">Submit</button>
         </form>
     </div>
-
-    <div id="modal_spinner" class="container-fluid bg-dark">
-        <strong class="text-white mt-2 w3-center">
-            <b class="fa fa-spinner fa-spin"></b>
-        </strong>
-        <p class="text-white mt-4">
-            [Si la pantalla persiste por más de 3 minutos: recargue la página]
-        </p>
-    </div>
-
 
     <script src="<?php echo base_url('lib/js/app.js') ?>"></script>
     <script src="<?php echo base_url('lib/js/sweetalert.min.js') ?>"></script>
     <script src="<?php echo base_url('lib/js/jquery-3.2.1.slim.min.js') ?>"></script>
+    <script src="<?php echo base_url(); ?>lib/js/jquery.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>lib/js/bs/bootstrap.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url('lib/js/popper.min.js') ?>"></script>
-    <script src="<?php echo base_url('lib/js/jquery-validate.min.js') ?>"></script>
 
     <script>
-		$(document).ready(() => {
-            showSpiner();
-            setTimeout(() => {
-                hideSpiner();
-            }, 5000);
-			$("#form_register").validate();
+    function validate(e) {
+        e.preventDefault();
+        let email = document.getElementById("email");
+        let pwd = document.getElementById("pwd");
+        let submit = document.getElementById("submit");
+        let base_url = <?php echo json_encode(base_url()); ?>;
 
-			$("#submit_form").click((e) => {
-				e.preventDefault();
-				let validado = $("#form_register").valid();
-				if(validado){
-					guardarDatos();
-				}
-				return false;
-			});
-		});
-	</script>
+        if (!email.checkValidity() || !pwd.checkValidity() ) {
+            document.getElementById("alert").innerHTML = inpObj.validationMessage;
+
+        } else {
+            const url = base_url + 'User_controller/validate_login';
+            
+            $.ajax({
+                url: url,
+                data: {'email': email.value, 'password': pwd.value},
+                type: 'POST',
+                beforeSend: function(){
+                    submit.disabled = true;
+                },
+                success: function(data){
+                    respuesta = JSON.parse(data);
+                    if(respuesta.loggin) {
+                        console.log('login successfull');
+                        //window.location = base_url + "home";
+                    }
+                    else if(respuesta.email) {
+                        $('#alert').toggle('fast');
+                        submit.disabled = false;
+                        setTimeout(function(){
+                            $('#alert').toggle('fast');
+                        }, 3000)
+                    }else {
+                        console.log(respuesta);
+                    }
+                },
+                error: function(){
+                    console.log('error filesystem: ' + url);
+                    /* window.location = base_url + "login"; */
+                }
+            })
+        }
+        return false;
+    }
+</script>
 
 </body>
 </html>

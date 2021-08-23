@@ -1,5 +1,9 @@
 @import url(general.css);
 
+.hidden {
+    display: none;
+}
+
 body {
     /* background: url('../images/login/back.png'); */
     background-size: cover;
