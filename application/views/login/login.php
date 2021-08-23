@@ -1,22 +1,20 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Login Page</title>
-   <!--Made with love by Mutiullah Samim -->
-	<meta charset="utf-8">
-	<!--Bootsrap 4 CDN-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    
-    <!--Fontawesome CDN-->
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<html lang="es" prefix="og: https://ogp.me/ns#">
+<head prefix="home: <?php echo base_url()?>home">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Primary Meta Tags -->
+    <title>Proyecto - Principe de paz</title>
+    <meta name="title" content="Proyecto - Principe de paz">
+    <meta name="description" content="Proyecto - Principe de paz">
 
-	<!--Custom styles-->
-	<link rel="stylesheet" type="text/css" href="login.css">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/bs/bootstrap.min.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/login_2.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/loader_css.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/animate.css')?>" />
+    <!-- fonts -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/fontawesome/css/fontawesome.min.css') ?>">
 </head>
 <body>
 <div class="container">
@@ -25,7 +23,7 @@
 			<div class="card-header">
 				<h3>Inicio de Sesión </h3>
 				<div class="d-flex justify-content-end social_icon">
-					<img class="logo" src="../img/logoccaa.png">
+					<img class="logo" src="<?php echo base_url('lib/img/logoccaa.png') ?>">
 				</div>
 			</div>
 			<div class="card-body">

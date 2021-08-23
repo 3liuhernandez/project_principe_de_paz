@@ -65,12 +65,13 @@
                 },
                 success: function(data){
                     respuesta = JSON.parse(data);
+                    console.log(respuesta);
                     if(respuesta.loggin) {
                         console.log('login successfull');
                         //window.location = base_url + "home";
                     }
                     else if(respuesta.email) {
-                        console.log(respuesta);
+                        
                         $('#alert').toggle('fast');
                         submit.disabled = false;
                         setTimeout(function(){

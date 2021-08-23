@@ -9,7 +9,7 @@ class User_controller extends CI_Controller {
 	}
 
     public function login() {
-        $this->load->view('login_view');
+        $this->load->view('login/login');
     }
 
     public function validate_login() {
