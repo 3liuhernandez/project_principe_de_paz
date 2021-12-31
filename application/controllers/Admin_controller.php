@@ -17,4 +17,13 @@ class Admin_controller extends CI_Controller {
     public function index() {
         $this->load->view('admin/index');
     }
+
+	public function users() {
+		$this->load->view('admin/users/index');
+	}
+
+	public function users_admin() {
+		$this->load->view('admin/users/admin/index');
+	}
+
 }
