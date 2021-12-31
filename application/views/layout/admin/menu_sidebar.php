@@ -20,10 +20,10 @@
                 <a href="#"><i class="fa fa-users"></i> Usuarios<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="<?php echo base_url('users/admin') ?>">Usuarios Admin</a>
+                        <a href="<?php echo base_url('admin/users/admin') ?>">Usuarios Admin</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('users/normal') ?>">Usuarios Normal</a>
+                        <a href="<?php echo base_url('admin/users/normal') ?>">Usuarios Normal</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
