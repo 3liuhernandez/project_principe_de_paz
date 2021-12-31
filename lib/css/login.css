@@ -1,188 +1,95 @@
-@import url(general.css);
+/* Made with love by Mutiullah Samim*/
 
+@import url('https://fonts.googleapis.com/css?family=Numans');
 .hidden {
-    display: none;
+  display: none;
+}
+html,body{
+  background-image: url('https://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: 'Numans', sans-serif;
 }
 
-body {
-    /* background: url('../images/login/back.png'); */
-    background-size: cover;
-    background-repeat: no-repeat;
+.container{
+  height: 100%;
+  align-content: center;
 }
 
-#login_container_fluid {
-    height: 100vh;
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    overflow: hidden;
+.card{
+height: 370px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
 }
 
-#login_container_fluid .row#login_container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    align-content: center;
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #FFC312;
 }
 
-#login_container_fluid .row#login_container #logo_container {
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    color: #fff;
-    flex-direction: column;
+.social_icon span:hover{
+color: white;
+cursor: pointer;
 }
 
-#login_container_fluid .row#login_container #logo_container img {
-    max-width: 300px;
+.card-header h3{
+color: white;
 }
 
-#login_container_fluid .row#login_container #form_container #login_form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    padding-left: 20%;
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
 }
 
-#login_container_fluid .row#login_container #form_container #login_form input {
-    outline: 0;
-    border: 0;
-    margin: 10px 0;
-    height: 45px;
-    width: 65%;
-    padding: 3%;
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
 }
 
-#login_container_fluid .row#login_container #form_container #login_form input:first-child {
-    margin-top: 0;
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
 }
 
-#login_container_fluid .row#login_container #form_container #login_form input::placeholder {
-    font-size: .9em;
+.remember{
+color: white;
 }
 
-#login_container_fluid .row#login_container #form_container #login_form input#submit_login_form {
-    color: #fff;
-    width: 50%;
-    margin-top: 5%;
-    padding: 0;
-    font-size: 1.3em;
-    border-radius: 0;
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
 }
 
-/* Large devices (desktops, less than 1200px) */
-@media (max-width: 1199.98px) {  }
-
-/* Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) {
-
-    #login_container_fluid .row#login_container #logo_container img {
-        max-width: 250px;
-        width: 100%;
-    }
-    #login_container_fluid .row#login_container #form_container #login_form {
-        padding: 0 10%;
-    }
-    #login_container_fluid .row#login_container #form_container #login_form input {
-        width: 100%;
-    }
-
-    #login_container_fluid .row#login_container #form_container #login_form input#submit_login_form {
-        width: 80%;
-        margin-top: 15%;
-    }
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
 }
 
-/* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
-
-    #login_container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: space-around;
-        height: 100%;
-    }
-
-    #login_container_fluid .row#login_container {
-        flex-direction: column;
-        padding: 10%;
-        flex-wrap: nowrap;
-        justify-content: center;
-    }
-    #login_container_fluid .row#login_container #logo_container {
-        margin-bottom: 10%;
-    }
-    #login_container_fluid .row#login_container #logo_container img {
-        max-width: 400px;
-        width: 100%;
-    }
-
-    #login_container_fluid .row#login_container #form_container #login_form {
-        padding: 0;
-        align-content: center;
-        align-items: center;
-    }
-    #login_container_fluid .row#login_container #form_container #login_form input {
-        width: 70%;
-    }
-    #login_container_fluid .row#login_container #form_container #login_form input#submit_login_form {
-        width: 50%;
-        margin-top: 10%;
-    }
+.login_btn:hover{
+color: black;
+background-color: white;
 }
 
-@media (max-width: 680px) {
-    #login_container_fluid .row#login_container #logo_container img {
-        max-width: 330px;
-    }
+.links{
+color: white;
 }
 
-
-/* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
-
-    #login_container_fluid .row#login_container #logo_container {
-        margin: 15% 0;
-    }
-    
-    #login_container_fluid .row#login_container #logo_container img {
-        max-width: 330px;
-    }
-
-    #login_container_fluid .row#login_container #form_container #login_form {
-        align-content: flex-start;
-    }
-
-    #login_container_fluid .row#login_container #form_container #login_form input {
-        width: 100%;
-    }
-
-    #login_container_fluid .row#login_container #form_container #login_form input#submit_login_form {
-        width: 100%;
-        margin-top: 25%;
-    }
+.links a{
+margin-left: 4px;
 }
 
-@media (max-width: 375px) {
-    #login_container_fluid .row#login_container #logo_container img {
-        max-width: 300px;
-    }
-}
-
-@media (max-width: 320px) {
-    #login_container_fluid .row#login_container #logo_container img {
-        max-width: 280px;
-    }
-    #login_container_fluid .row#login_container #form_container {
-        padding: 0;
-    }
+.logo {
+  width: 30%;
 }

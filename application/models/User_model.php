@@ -7,7 +7,7 @@
         }
 
         public function get_user_by_login($email, $password) {
-            $query = $this->db->query("SELECT * FROM users WHERE email LIKE ? AND `password` LIKE ? AND status = 1", array($email, $password));
+            $query = $this->db->query("SELECT * FROM users WHERE email LIKE ? AND `pass` LIKE ? AND status = 1", array($email, $password));
             $rows = $query->num_rows();
             
             if($rows > 0){

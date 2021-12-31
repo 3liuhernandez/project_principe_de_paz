@@ -53,6 +53,15 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
+
+$environments = array(
+    '[::1]'             => 'localhost',
+    //'localhost'         => 'localhost',
+    'localhost:8888'    => 'localhost',
+    'www.localhost'     => 'localhost',
+    'localhost'         => 'localhost'
+
+);
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*

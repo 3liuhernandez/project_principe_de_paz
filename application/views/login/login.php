@@ -9,7 +9,7 @@
     <meta name="description" content="Proyecto - Principe de paz">
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/bs/bootstrap.min.css')?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/login_2.css')?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/login.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/loader_css.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/animate.css')?>" />
     <!-- fonts -->
@@ -96,7 +96,7 @@
                     respuesta = JSON.parse(data);
 
                     console.log(respuesta);
-					
+
                     if(respuesta.loggin) {
 						window.location = base_url + "user_redirect";
                     }
@@ -113,7 +113,7 @@
                     }
                 },
                 error: function(){
-                    console.log('error filesystem: ');
+                    console.log('error filesystem: ' + base_url);
                     /* window.location = base_url + "login"; */
                 }
             })
