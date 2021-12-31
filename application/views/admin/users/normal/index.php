@@ -1,6 +1,6 @@
 <?php $this->load->view('layout/admin/app_admin'); ?>
 
-<h1> Usuarios Administradores </h1>
+<h1> Usuarios</h1>
 
 <div class="btn-group">
   <button type="button" class="btn btn-primary">Agregar nuevo</button>
@@ -56,7 +56,6 @@
 </div>
 
 <?php $this->load->view('layout/admin/footer_admin'); ?>
-
 
 <script>
     $(document).ready( function() {

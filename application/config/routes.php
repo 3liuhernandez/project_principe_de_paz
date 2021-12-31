@@ -68,3 +68,6 @@ $route['admin/users'] = 'Admin_controller/users';
 
 /* USUARIOS ADMINISTRADORES */
 $route['users/admin'] = 'Admin_controller/users_admin';
+
+/* USUARIOS NORMALES */
+$route['users/normal'] = 'Admin_controller/users_normal';

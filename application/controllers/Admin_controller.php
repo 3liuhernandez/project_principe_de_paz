@@ -26,4 +26,8 @@ class Admin_controller extends CI_Controller {
 		$this->load->view('admin/users/admin/index');
 	}
 
+	public function users_normal() {
+		$this->load->view('admin/users/normal/index');
+	}	
+
 }

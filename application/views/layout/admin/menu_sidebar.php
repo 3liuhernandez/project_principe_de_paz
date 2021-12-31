@@ -22,7 +22,7 @@
                         <a href="<?php echo base_url('users/admin') ?>">Usuarios Admin</a>
                     </li>
                     <li>
-                        <a href="morris.html">Usuarios Normal</a>
+                        <a href="<?php echo base_url('users/normal') ?>">Usuarios Normal</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
