@@ -19,11 +19,29 @@ class Admin_controller extends CI_Controller {
     }
 
 	public function users() {
-		$this->load->view('admin/users/index');
+		$this->load->view('admin/users');
 	}
 
 	public function users_admin() {
-		$this->load->view('admin/users/admin/index');
+		$this->load->view('admin/users/admin');
+	}
+	
+	public function members() {
+		$this->load->view('admin/members/general');
+	}
+	
+	public function leaders() {
+		$this->load->view('admin/members/leaders');
 	}
 
+	public function discipleship($nivel) {
+		$data = [];
+		$data['nivel'] = $nivel;
+
+		$this->load->view('admin/discipleship/level',$data);
+	}
+
+	public function teams() {
+		$this->load->view('admin/teams');
+	}
 }

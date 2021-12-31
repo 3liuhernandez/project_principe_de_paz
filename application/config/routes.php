@@ -64,7 +64,20 @@ $route['login'] = 'User_controller';
 
 // ADMIN
 $route['admin'] = 'Admin_controller/index';
-$route['admin/users'] = 'Admin_controller/users';
 
-/* USUARIOS ADMINISTRADORES */
-$route['users/admin'] = 'Admin_controller/users_admin';
+
+/* MIEMBROS GENERAL */
+$route['admin/members'] = 'Admin_controller/members';
+
+/* MIEMBROS LIDERAZGO */
+$route['admin/members/leaders'] = 'Admin_controller/leaders';
+
+/* ESCUELA DISCIPULADO NIVEL 1*/
+$route['admin/discipleship/level/(:num)'] = 'Admin_controller/discipleship/$1';
+
+/* EQUIPOS PASTORALES */
+$route['admin/teams'] = 'Admin_controller/teams';
+
+
+
+
