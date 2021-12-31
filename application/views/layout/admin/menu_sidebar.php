@@ -13,7 +13,9 @@
                 <!-- /input-group -->
             </li>
             <li>
-                <a href="index.html" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="#" class="active">
+                    <i class="fa fa-dashboard fa-fw"></i> Dashboard
+                </a>
             </li>
 
             <li>
@@ -28,7 +30,7 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-            
+
             <li>
                 <a href="#"><i class="fa fa-address-card"></i> Miembros<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -40,7 +42,12 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="#"><i class="fa fa-graduation-cap"></i> Escuela de Discipulado<span class="fa arrow"></span></a>
+            <li>
+                <a href="<?php echo base_url('escuela') ?>">
+                    <i class="fa fa-graduation-cap"></i>
+                    Escuela de Discipulado
+                    <span class="fa arrow"></span>
+                </a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="<?php echo base_url('admin/discipleship/level/1') ?>">Nivel I</a>
