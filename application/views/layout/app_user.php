@@ -8,8 +8,7 @@
     <meta name="title" content="Proyecto - Principe de paz">
     <meta name="description" content="Proyecto - Principe de paz">
 
-
-    <link rel="stylesheet" href="<?php echo base_url()?>lib/css/bs/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>lib/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>lib/css/login.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>lib/css/animate.css" />
 </head>

@@ -1,40 +1,34 @@
 <?php
     defined('BASEPATH') OR exit('No direct script access allowed');
     class User_model extends CI_Model{
-        public function __construct()
-        {
+        protected $table = 'users u';
+
+        protected $role_admin = '1';
+        protected $role_normal = '2';
+        protected $role_all = '';
+
+        protected $active = 1;
+        protected $in_active = 0;
+
+        public function __construct() {
             parent::__construct();
         }
 
-        public function get_user_by_login($email, $password) {
-            $query = $this->db->query("SELECT * FROM users WHERE email LIKE ? AND `pass` LIKE ? AND status = 1", array($email, $password));
-            $rows = $query->num_rows();
-            
-            if($rows > 0){
-                return $query->result();
-                exit;
-
-            } else {
-                return '404 - '. $rows;
-
-            }
+        public function get_all_users() {
+            $this->db->from( $this->table );
+            $users = $this->db->get();
+            return $users->result();
         }
 
-        public function logout() {
-            $dtz = new DateTimeZone("America/Argentina/Buenos_Aires");
-            $dt = new DateTime("now", $dtz);
-            $currentTime = $dt->format("Y-m-d") . " " . $dt->format("H:i:s");
-
-            $user_id = $this->session->userdata('user_id');
-            $this->db->set('updated_at', $currentTime);
-            $this->db->where('id', $user_id);
-            $this->db->update('users');
-            if($this->db->affected_rows() > 0){
-                return "200";
-
-            } else{
-                return "500";
-            }
+        public function get_users_by_role($role = '') {
+            $this->db->select('u.email, u.role, m.name, m.last_name, m.dni, m.type_id, mt.type_name');
+            $this->db->from( $this->table );
+            $this->db->join('members m', 'u.member_dni = m.dni AND m.status = 1', 'left');
+            $this->db->join('members_type mt', 'm.type_id = mt.type_id', 'left');
+            if( $role ) { $this->db->where('role', $role); }
+            $this->db->where('u.status', $this->active);
+            $users = $this->db->get();
+            return $users->result();
         }
     }
 ?>

@@ -4,14 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin_controller extends CI_Controller {
 
     function __construct() {
+
 		parent::__construct();
-		if(!$this->session->userdata('logged_in')){
+
+		if(!$this->session->userdata('logged_in')) {
 			redirect(base_url());
 		}
 
-        if($this->session->userdata('role') > 1){
+        if($this->session->userdata('role') > 1) {
 			redirect(base_url());
 		}
+
 	}
 
     public function index() {
@@ -23,7 +26,17 @@ class Admin_controller extends CI_Controller {
 	}
 
 	public function users_admin() {
-		$this->load->view('admin/users/admin/index');
+
+		$this->load->model('User_model');
+		$this->load->model('Member_model');
+
+		$list_users = $this->User_model->get_users_by_role(1);
+		$data['list_users'] = $list_users;
+
+		$list_members = $this->Member_model->get_members_by_type('');
+		$data['list_members'] = $list_members;
+
+		$this->load->view('admin/users/admin/index', $data);
 	}
 
 	public function users_normal() {

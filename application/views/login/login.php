@@ -8,7 +8,10 @@
     <meta name="title" content="Proyecto - Principe de paz">
     <meta name="description" content="Proyecto - Principe de paz">
 
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/bs/bootstrap.min.css')?>">
+    <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/bootstrap.min.css')?>"> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/login.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/loader_css.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/animate.css')?>" />
@@ -66,60 +69,65 @@
     <script src="<?php echo base_url('lib/js/sweetalert.min.js') ?>"></script>
     <script src="<?php echo base_url('lib/js/jquery-3.2.1.slim.min.js') ?>"></script>
     <script src="<?php echo base_url('lib/js/jquery.min.js'); ?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('lib/js/bs/bootstrap.min.js'); ?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('lib/js/bootstrap.min.js'); ?>" type="text/javascript"></script>
+
     <script src="<?php echo base_url('lib/js/popper.min.js') ?>"></script>
 
-<script>
-    function validate(e) {
-        e.preventDefault();
-        let email = document.getElementById("email");
-        let pswd = document.getElementById("pswd");
-        let submit = document.getElementById("submit");
-        let base_url = <?php echo json_encode(base_url()); ?>;
+    <!--<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>-->
 
-        if (email === " " || pswd === " " ) {
-            alert("rellene los campos");
+    <script>
+        function validate(e) {
+            e.preventDefault();
+            let email = document.getElementById("email");
+            let pswd = document.getElementById("pswd");
+            let submit = document.getElementById("submit");
+            let base_url = <?php echo json_encode(base_url()); ?>;
 
-        } else {
-            
-            $.ajax({
-                url: base_url + 'User_controller/validate_login',
-                data: {
-					'email': email.value,
-					'pswd': pswd.value
-				},
-                type: 'POST',
-                beforeSend: function(){
-                    submit.disabled = true;
-                },
-                success: function(data){
-                    respuesta = JSON.parse(data);
+            if (email === " " || pswd === " " ) {
+                alert("rellene los campos");
 
-                    console.log(respuesta);
-
-                    if(respuesta.loggin) {
-						window.location = base_url + "user_redirect";
-                    }
-                    else if(respuesta.email) {
-                        
-                        $('#alert').toggle('fast');
-                        submit.disabled = false;
-                        setTimeout(function(){
-                            $('#alert').toggle('fast');
-                        }, 3000)
-                    }else {
+            } else {
+                
+                $.ajax({
+                    url: base_url + 'Login_controller/validate_login',
+                    data: {
+                        'email': email.value,
+                        'pswd': pswd.value
+                    },
+                    type: 'POST',
+                    beforeSend: function(){
+                        submit.disabled = true;
+                    },
+                    success: function(data){
+                        respuesta = JSON.parse(data);
 
                         console.log(respuesta);
+
+                        if(respuesta.loggin) {
+                            window.location = base_url + "user_redirect";
+                        }
+                        else if(respuesta.email) {
+                            
+                            $('#alert').toggle('fast');
+                            submit.disabled = false;
+                            setTimeout(function(){
+                                $('#alert').toggle('fast');
+                            }, 3000)
+                        }else {
+
+                            console.log(respuesta);
+                        }
+                    },
+                    error: function(){
+                        console.log('error filesystem: ' + base_url);
+                        /* window.location = base_url + "login"; */
                     }
-                },
-                error: function(){
-                    console.log('error filesystem: ' + base_url);
-                    /* window.location = base_url + "login"; */
-                }
-            })
+                })
+            }
+            return false;
         }
-        return false;
-    }
-</script>
+    </script>
 </body>
 </html>

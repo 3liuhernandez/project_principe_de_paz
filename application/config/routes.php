@@ -49,9 +49,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'User_controller';
-$route['/'] = 'User_controller';
-$route['user_redirect'] = 'User_controller/redirect';
+$route['default_controller'] = 'Login_controller';
+$route['/'] = 'Login_controller';
+$route['user_redirect'] = 'Login_controller/redirect';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
@@ -59,20 +59,32 @@ $route['translate_uri_dashes'] = FALSE;
 $route['home'] = 'Home_controller';
 
 // USER CONTROLLER
-$route['login'] = 'User_controller';
+$route['login'] = 'Login_controller';
 
 
 // ADMIN
 $route['admin'] = 'Admin_controller/index';
 
-/* USUARIOS ADMINISTRADORES */
-$route['admin/users/admin'] = 'Admin_controller/users_admin';
+/* USUARIOS */
+    /* VIEWS */
+        /* ADMINS */
+        $route['admin/users/admin'] = 'Admin_controller/users_admin';
+        /* NORMALES */
+        $route['admin/users/normal'] = 'Admin_controller/users_normal';
 
-/* USUARIOS NORMALES */
-$route['admin/users/normal'] = 'Admin_controller/users_normal';
+    /* GETTERS */
+        /* ALL */
+        $route['admin/users/admin/all'] = 'User_controller/get_all_users';
+        /* BY ROLE */
+        $route['admin/get_list_users/(:num)'] = 'User_controller/get_users_by_role/$1';
+
+
 
 /* MIEMBROS GENERAL */
 $route['admin/members'] = 'Admin_controller/members';
+
+
+$route['admin/members/list'] = 'Member_controller/get_all_members';
 
 /* MIEMBROS LIDERAZGO */
 $route['admin/members/leaders'] = 'Admin_controller/leaders';
