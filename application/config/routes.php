@@ -58,8 +58,9 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['home'] = 'Home_controller';
 
-// USER CONTROLLER
+// LOGIN CONTROLLER
 $route['login'] = 'Login_controller';
+$route['validate_login'] = 'Login_controller/validate_login';
 
 
 // ADMIN
@@ -84,7 +85,7 @@ $route['admin'] = 'Admin_controller/index';
 $route['admin/members'] = 'Admin_controller/members';
 
 
-$route['admin/members/list'] = 'Member_controller/get_all_members';
+$route['admin/members/members_to_user'] = 'Member_controller/members_to_assign_user';
 
 /* MIEMBROS LIDERAZGO */
 $route['admin/members/leaders'] = 'Admin_controller/leaders';

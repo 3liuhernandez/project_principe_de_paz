@@ -33,13 +33,16 @@
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url('lib/js/startmin.js')?>"></script>
 
+    <script src="<?php echo base_url('lib/js/sweetalert.min.js')?>"></script>
+    <script src="<?php echo base_url('lib/js/app.js')?>"></script>
+
     <!-- DATA TABLES BS JS -->
     <script src="<?php echo base_url('lib/js/dataTables/dataTables.bootstrap.js')?>"></script>
     <script src="<?php echo base_url('lib/js/dataTables/jquery.dataTables.min.js')?>"></script>
 
     <script>
         var base_url = <?php echo json_encode(base_url()); ?>;
-        
+
     </script>
 
 </html>

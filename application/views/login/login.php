@@ -10,7 +10,8 @@
 
     <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/bootstrap.min.css')?>"> -->
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">-->
+     <link rel="stylesheet" href="<?php echo base_url('lib/css/bs/bootstrap.min.css')?>">
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/login.css')?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('lib/css/loader_css.css')?>">
@@ -73,10 +74,6 @@
 
     <script src="<?php echo base_url('lib/js/popper.min.js') ?>"></script>
 
-    <!--<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>-->
-
     <script>
         function validate(e) {
             e.preventDefault();
@@ -91,7 +88,7 @@
             } else {
                 
                 $.ajax({
-                    url: base_url + 'Login_controller/validate_login',
+                    url: base_url + 'validate_login',
                     data: {
                         'email': email.value,
                         'pswd': pswd.value
@@ -103,7 +100,7 @@
                     success: function(data){
                         respuesta = JSON.parse(data);
 
-                        console.log(respuesta);
+                        //console.log(respuesta);
 
                         if(respuesta.loggin) {
                             window.location = base_url + "user_redirect";

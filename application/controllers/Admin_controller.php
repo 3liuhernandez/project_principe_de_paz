@@ -29,8 +29,8 @@ class Admin_controller extends CI_Controller {
 
 		$this->load->model('User_model');
 		$this->load->model('Member_model');
-
-		$list_users = $this->User_model->get_users_by_role(1);
+		$role = 1;
+		$list_users = $this->User_model->get_users_by_role($role);
 		$data['list_users'] = $list_users;
 
 		$list_members = $this->Member_model->get_members_by_type('');

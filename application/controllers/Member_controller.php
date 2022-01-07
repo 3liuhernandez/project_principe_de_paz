@@ -8,8 +8,8 @@ class Member_controller extends CI_Controller {
         $this->load->model( "Member_model" );
     }
 
-    public function get_all_members() {
-        $list_members = $this->Member_model->get_members_by_type();
+    public function members_to_assign_user() {
+        $list_members = $this->Member_model->members_to_assign_user();
         echo json_encode( $list_members );
     }
 

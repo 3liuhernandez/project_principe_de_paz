@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login_controller extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+    }
+
 	public function index() {
         $this->session->sess_destroy();
         $this->login();
@@ -53,13 +57,16 @@ class Login_controller extends CI_Controller {
              * loggin successfull
              */
             $validate['loggin'] = true;
-            $validate['user_data'] = $user_data;
 
-            $this->session->set_userdata('username', $user_data[0]->email);
-            $this->session->set_userdata('user_id', $user_data[0]->id);
-            $this->session->set_userdata('last_login', $user_data[0]->updated_at);
-            $this->session->set_userdata('role', $user_data[0]->role);
+            $user_data = $user_data[0];
             $this->session->set_userdata('logged_in', TRUE);
+
+            $this->session->set_userdata('role', $user_data->role );
+            $this->session->set_userdata('last_login', $user_data->last_login );
+            $this->session->set_userdata('dni', $user_data->dni );
+            $this->session->set_userdata('name', $user_data->name );
+            $this->session->set_userdata('last_name', $user_data->last_name );
+            $this->session->set_userdata('email', $user_data->email );
 
         }
         print json_encode($validate);

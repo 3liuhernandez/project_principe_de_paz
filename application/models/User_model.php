@@ -21,11 +21,13 @@
         }
 
         public function get_users_by_role($role = '') {
-            $this->db->select('u.email, u.role, m.name, m.last_name, m.dni, m.type_id, mt.type_name');
+            $this->db->select('m.email, u.role, m.name, m.last_name, m.dni, m.type_id, mt.type_name');
             $this->db->from( $this->table );
             $this->db->join('members m', 'u.member_dni = m.dni AND m.status = 1', 'left');
             $this->db->join('members_type mt', 'm.type_id = mt.type_id', 'left');
+
             if( $role ) { $this->db->where('role', $role); }
+
             $this->db->where('u.status', $this->active);
             $users = $this->db->get();
             return $users->result();
